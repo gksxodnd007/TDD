@@ -46,5 +46,10 @@ public class LottoApplication {
                 .collect(Collectors.toList());
 
         results.forEach(it -> System.out.println("당첨 금액 : " + it));
+        Long result = results.stream()
+                .reduce(Long::sum)
+                .orElse(0L);
+
+        System.out.println("수익률 : " + PrizeMoneyManager.calculateEarningRate(purchaseAmount, result));
     }
 }

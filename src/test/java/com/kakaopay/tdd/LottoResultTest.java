@@ -15,6 +15,9 @@ class LottoResultTest {
 
     private static List<Integer> WIN_NUMBERS;
     private static int BONUS_NUMBER = 44;
+    private static long PURCHASE_AMOUNT = 8000;
+    private static long EXPECT_WIN_MONEY = 5000;
+    private static double EXPECT_EARNING_RATE = 5000.00 / 8000.00;
 
     static {
          WIN_NUMBERS = new ArrayList<>();
@@ -114,6 +117,13 @@ class LottoResultTest {
 
             assertEquals(PrizeMoneyManager.FIFTH_PRIZE_MONEY, PrizeMoneyManager.get(mock));
         }
+    }
+
+    @Test
+    void 수익률계산_검증() {
+        double result = PrizeMoneyManager.calculateEarningRate(PURCHASE_AMOUNT, EXPECT_WIN_MONEY);
+
+        assertEquals(EXPECT_EARNING_RATE, result);
     }
 
     private LottoTicket mockLottoTicketWhenFirstGrade() {

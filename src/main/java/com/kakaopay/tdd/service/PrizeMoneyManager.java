@@ -26,4 +26,8 @@ public class PrizeMoneyManager {
                 return 0;
         }
     }
+
+    public static double calculateEarningRate(long purchaseAmount, long earnMoney) {
+        return Double.parseDouble(Long.toString(earnMoney)) / Double.parseDouble(Long.toString(purchaseAmount));
+    }
 }
